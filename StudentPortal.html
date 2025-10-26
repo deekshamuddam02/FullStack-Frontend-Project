@@ -1,0 +1,255 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Portal</title>
+</head>
+<body>
+    <div class="container"> 
+        <div class="header">
+            <h1>🎓 Study Portal</h1>
+            <p>Your Gateway to Higher Education</p>
+        </div>
+        <div id="authSection" class="auth-container">
+            <div class="auth-tabs">
+                <button class="auth-tab active" onclick="switchTab('student')">Student Portal</button>
+                <button class="auth-tab" onclick="switchTab('admin')">Admin Portal</button>
+            </div>
+            
+            <div class="auth-content">
+                <div id="studentAuth">
+                    <div id="studentLogin">
+                        <h2>Student Login</h2>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" id="studentEmail" placeholder="Enter your email">
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" id="studentPassword" placeholder="Enter your password">
+                        </div>
+                        <button class="btn" onclick="studentLogin()">Login</button>
+                        <button class="btn btn-secondary" onclick="showStudentRegister()">New Student? Register</button>
+                    </div>
+
+                    <div id="studentRegister" class="hidden">
+                        <h2>Student Registration</h2>
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" id="regName" placeholder="Enter your full name">
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" id="regEmail" placeholder="Enter your email">
+                        </div>
+                        <div class="form-group">
+                            <label>Phone</label>
+                            <input type="tel" id="regPhone" placeholder="Enter your phone number">
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" id="regPassword" placeholder="Create a password">
+                        </div>
+                        <button class="btn" onclick="studentRegister()">Register</button>
+                        <button class="btn btn-secondary" onclick="showStudentLogin()">Back to Login</button>
+                    </div>
+                </div>
+
+                <div id="adminAuth" class="hidden">
+                    <h2>Admin Login</h2>
+                    <div class="form-group">
+                        <label>Admin ID</label>
+                        <input type="text" id="adminId" placeholder="Enter admin ID" value="admin">
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" id="adminPassword" placeholder="Enter password" value="admin123">
+                    </div>
+                    <button class="btn" onclick="adminLogin()">Login</button>
+              </div>
+            </div>
+        </div>
+        <div id="studentDashboard" class="dashboard hidden">
+            <div class="dashboard-header">
+                <div>
+                    <h2>Student Dashboard</h2>
+                    <p id="studentWelcome">Welcome back!</p>
+                </div>
+                <button class="btn btn-secondary" onclick="logout()">Logout</button>
+            </div>
+            
+            <div class="dashboard-content">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3 id="studentApplications">1</h3>
+                        <p>Applications Submitted</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 id="applicationStatus">Pending</h3>
+                        <p>Current Status</p>
+                    </div>
+                </div>
+
+                <div>
+                    <button class="btn" onclick="showApplicationForm()" style="width: auto; margin-right: 10px;">
+                        📝 New Application
+                    </button>
+                    <button class="btn btn-secondary" onclick="showApplicationHistory()" style="width: auto;">
+                        📋 View History
+                    </button>
+                </div>
+
+                <div id="applicationFormContainer" class="hidden">
+                    <div class="applications-list">
+                        <h3>Application Form</h3>
+                        
+                        <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                        </div>
+                        <p>Step 1 of 3: Personal Information</p>
+
+                        <form class="application-form" id="applicationForm">
+                            <div class="form-section">
+                                <h3>Personal Information</h3>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>First Name *</label>
+                                <input type="text" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Last Name *</label>
+                                <input type="text" name="lastName" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Date of Birth *</label>
+                                <input type="date" name="dob" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Gender</label>
+                                <select name="gender">
+                                    <option value="">Select Gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Phone Number *</label>
+                                <input type="tel" name="phone" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Email Address *</label>
+                                <input type="email" name="email" required>
+                            </div>
+                            
+                            <div class="form-section">
+                                 <p>Step 2 of 3: Personal Information</p>
+                                <h3>Academic Information</h3>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Program Applying For *</label>
+                                <select name="program" required>
+                                    <option value="">Select Program</option>
+                                    <option value="cs">Computer Science</option>
+                                    <option value="ai">Artificial Intelligence</option>
+                                    <option value="ml">Machine Learning</option>
+                                    <option value="ds">Data Science</option>
+                                    <option value="ece">Electronics and Communication</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Previous School/College *</label>
+                                <input type="text" name="previousSchool" required>
+                            </div>
+                            <div class="form-group">
+                                <label>GPA/Percentage *</label>
+                                <input type="text" name="gpa" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Graduation Year *</label>
+                                <input type="number" name="gradYear" min="2020" max="2025" required>
+                            </div>
+                            
+                            <div class="form-section">
+                                 <p>Step 3 of 3: Personal Information</p>
+                                <h3>Documents</h3>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Academic Transcripts</label>
+                                <div class="file-upload" onclick="document.getElementById('transcripts').click()">
+                                    <input type="file" id="transcripts" name="transcripts" accept=".pdf,.jpg,.png">
+                                    <p>📄 Click to upload transcripts</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Statement of Purpose</label>
+                                <textarea name="statement" rows="5" placeholder="Write your statement of purpose..."></textarea>
+                            </div>
+                            
+                            <div>
+                                <button type="button" class="btn" onclick="submitApplication()">Submit Application</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div id="applicationHistory">
+                    <div class="applications-list">
+                        <h3>Application History</h3>
+                        <div id="historyList">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="adminDashboard" class="dashboard hidden">
+            <div class="dashboard-header">
+                <div>
+                    <h2>Admin Dashboard</h2>
+                    <p>Manage Applications & Students</p>
+                </div>
+                <button class="btn btn-secondary" onclick="logout()">Logout</button>
+            </div>
+            
+            <div class="dashboard-content">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3 id="totalApplications">5</h3>
+                        <p>Total Applications</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 id="pendingApplications">3</h3>
+                        <p>Pending Review</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 id="approvedApplications">1</h3>
+                        <p>Approved</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 id="rejectedApplications">1</h3>
+                        <p>Rejected</p>
+                    </div>
+                </div>
+
+                <div class="applications-list">
+                    <h3>All Applications</h3>
+                    <div id="adminApplicationsList">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="footer">
+        <p>&copy; 2025 StudyPortal. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
